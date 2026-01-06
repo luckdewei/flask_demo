@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>用户列表</title>
+</head>
+<body>
+    <h1>用户列表</h1>
+    <h2>站点名称:{{ site_title }},当前用户{{ current_user }}</h1>
+    <ul>
+        {% for user in users %}
+          <li>{{user}}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
