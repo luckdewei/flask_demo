@@ -70,12 +70,12 @@ Base.metadata.create_all(engine)
 
 with Session(engine) as session:
     # user = User(
-    #    name="李四",
-    #    age=30,
-    #    addresses=[
-    #        Address(email="李四家里的地址@qq.com"),
-    #        Address(email="李四公司的地址@qq.com"),
-    #    ],
+    #     name="李四",
+    #     age=30,
+    #     addresses=[
+    #         Address(email="李四家里的地址@qq.com"),
+    #         Address(email="李四公司的地址@qq.com"),
+    #     ],
     # )
     # session.add(user)
     # session.commit()
@@ -84,17 +84,17 @@ with Session(engine) as session:
     # SELECT addresses.id AS addresses_id, addresses.user_id AS addresses_user_id, addresses.email AS addresses_email
     # FROM addresses WHERE 2 = addresses.user_id
     # user = session.scalars(select(User).where(User.name == "李四")).first()
-    # print(f"用户:{user.name}")
+    # print(f"用户:{user}")
     # for address in user.addresses:
-    #    print(f"地址:{address.email}")
+    #     print(f"地址:{address.email}")
     #  SELECT addresses.id, addresses.user_id, addresses.email FROM addresses WHERE addresses.email =  "李四家里的地址@qq.com"
     # ELECT users.id AS users_id, users.name AS users_name, users.age AS users_age
     # FROM users WHERE users.id = 2
 
-    # address = session.scalars(
-    #    select(Address).where(Address.email == "李四家里的地址@qq.com")
-    # ).first()
-    # print(f"地址:{address.email}")
+    address = session.scalars(
+        select(Address).where(Address.email == "李四家里的地址@qq.com")
+    ).first()
+    print(f"地址:{address.email}")
     ## 里面是懒加载的，如果读取user属性才会属性，不读不查询
     # print(f"用户:{address.user.name}")
 
@@ -106,9 +106,7 @@ with Session(engine) as session:
     # DELETE FROM addresses WHERE addresses.id = 1
     # DELETE FROM addresses WHERE addresses.id = 2
     # DELETE FROM users WHERE users.id = 2
-    user = session.scalars(select(User).where(User.name == "李四")).first()
-    session.delete(user)
-    session.commit()
+    # user = session.scalars(select(User).where(User.name == "李四")).first()
 
 
 # cascade什么是cascade
